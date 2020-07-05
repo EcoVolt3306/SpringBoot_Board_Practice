@@ -16,7 +16,7 @@
     </select>
 
     <select id="login" resultType="com.b.bbb.domain.LoginDTO">
-        select id, name, type from view_b_member
+        select mno, id, name, type from view_b_member
         where id = #{id} and password = #{password}
     </select>
 

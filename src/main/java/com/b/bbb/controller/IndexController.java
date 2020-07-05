@@ -52,4 +52,12 @@ public class IndexController {
         return "redirect:/";
     }
 
+    @GetMapping("/write")
+    public String write(Model model, HttpSession httpSession){
+        System.out.println("세션 정보 : " + httpSession.getAttribute("user"));
+        model.addAttribute("member", httpSession.getAttribute("user"));
+
+        return "/write";
+    }
+
 }

@@ -16,6 +16,11 @@ $(document).ready(function () {
         window.location.href='/';
     });
 
+    // 글쓰기
+    $('#writeBtn').click(function () {
+        window.location.href='/write';
+    });
+
     // #id를 변수로 keyValue 담아서 전달
     $('#join').click(function () {
         var data = {
@@ -50,6 +55,28 @@ $(document).ready(function () {
             data: data
         }).done(function(){
             alert("로그인 성공!");
+            window.location.href='/';
+        }).fail(function (error) {
+            alert(error);
+        });
+    });
+
+    // 글쓰기 데이터 전달
+    $('#reg').click(function () {
+        var data = {
+            mno : $('#mno').val(),
+            type : $('#type').val(),
+            title : $('#title').val(),
+            content : $('#content').val(),
+            writer : $('#writer').val()
+        };
+
+        $.ajax({
+            type: 'post',
+            url: '/rest/write',
+            data: data
+        }).done(function(){
+            alert("게시글 등록 완료!");
             window.location.href='/';
         }).fail(function (error) {
             alert(error);
