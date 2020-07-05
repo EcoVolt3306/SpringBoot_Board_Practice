@@ -1,6 +1,7 @@
 package com.b.bbb.controller;
 
 import com.b.bbb.domain.LoginDTO;
+import com.b.bbb.service.BoardService;
 import com.b.bbb.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,16 +13,24 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class IndexController {
+
+
     @Autowired
     MemberService memberService;
+    @Autowired
+    BoardService boardService;
 
     @GetMapping("/")
     public String index(Model model, HttpSession httpSession){
         System.out.println("memberList 컨트롤러 : " + memberService.memberList());
         model.addAttribute("memberList", memberService.memberList());
+
         System.out.println("세션 정보 : " + httpSession.getAttribute("user"));
         model.addAttribute("member", httpSession.getAttribute("user"));
+
+        model.addAttribute("boardList", boardService.boardList());
         return "index";
+
     }
 
     @GetMapping("/join")
@@ -56,7 +65,6 @@ public class IndexController {
     public String write(Model model, HttpSession httpSession){
         System.out.println("세션 정보 : " + httpSession.getAttribute("user"));
         model.addAttribute("member", httpSession.getAttribute("user"));
-
         return "/write";
     }
 

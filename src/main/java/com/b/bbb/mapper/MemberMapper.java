@@ -8,9 +8,6 @@ import java.util.ArrayList;
 
 public interface MemberMapper {
     void join(JoinDTO joinDTO);
-
     ArrayList<MemberListDTO> memberList();
-
     LoginDTO login(LoginDTO loginDTO);
-
 }

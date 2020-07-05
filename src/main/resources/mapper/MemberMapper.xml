@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.b.bbb.mapper.MemberMapper">
     <insert id="join">
-        insert into b_member values
+        insert into view_b_member values
         (seq_b_member_mno.nextval,  <!-- 시퀀스.nextval = 증가한 상태로 insert -->
         #{id},
         #{password},

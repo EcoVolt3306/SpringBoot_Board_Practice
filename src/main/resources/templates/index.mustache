@@ -2,7 +2,6 @@
 
 <hr>
 <h2>회원 목록</h2>
-<button id="writeBtn"> 글쓰기 </button><br>
 
 <table>
     <thead>
@@ -24,6 +23,38 @@
             <th>{{regdate}}</th>
         </tr>
         {{/memberList}}
+    </tbody>
+</table>
+<hr>
+
+<hr>
+<h2>게시판 목록</h2>
+<button id="writeBtn"> 글쓰기 </button><br>
+
+<table>
+    <thead>
+    <tr>
+        <th>글번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>등록일</th>
+        <th>조회수</th>
+        <th>일반 추천수</th>
+        <th>전문가 추천수</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#boardList}}
+        <tr>
+            <th>{{bno}}</th>
+            <th>{{title}}</th>
+            <th>{{writer}}</th>
+            <th>{{regdate}}</th>
+            <th>{{readcount}}</th>
+            <th>{{userreco}}</th>
+            <th>{{proreco}}</th>
+        </tr>
+    {{/boardList}}
     </tbody>
 </table>
 

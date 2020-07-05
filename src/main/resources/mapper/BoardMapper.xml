@@ -3,16 +3,22 @@
 <mapper namespace="com.b.bbb.mapper.BoardMapper">
 
     <insert id="write">
-        insert into b_board values
-        (seq_b_board_bno.nextval,  <!-- 시퀀스.nextval = 증가한 상태로 insert -->
-        #{title},
-        #{content},
-        #{writer},
-        sysdate,
-        0,
-        0,
-        0,
-        #{mno}
+        insert into view_b_board values(
+            seq_b_board_bno.nextval,  <!-- 시퀀스.nextval = 증가한 상태로 insert -->
+            #{title},
+            #{content},
+            #{writer},
+            sysdate,
+            0,
+            0,
+            0,
+            #{mno}
+        )
     </insert>
+
+    <select id="boardList" resultType="com.b.bbb.domain.BoardListDTO">
+        select bno, title, writer, regdate, readcount, userreco, proreco
+        from view_b_board
+    </select>
 
 </mapper>
