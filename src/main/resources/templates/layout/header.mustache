@@ -7,3 +7,11 @@
     <script src="/js/index.js"></script>
 </head>
 <body>
+{{#member}}
+    <p>{{member.name}}님 환영합니다!</p>
+    <button onclick="location.href='/logout'">로그아웃</button><br>
+{{/member}}
+{{^member}}
+    <button id="joinBtn"> 회원가입 </button>
+    <button id="loginBtn"> 로그인 </button><br>
+{{/member}}

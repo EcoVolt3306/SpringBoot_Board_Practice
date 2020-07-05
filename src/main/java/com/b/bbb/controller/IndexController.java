@@ -16,21 +16,25 @@ public class IndexController {
     MemberService memberService;
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, HttpSession httpSession){
         System.out.println("memberList 컨트롤러 : " + memberService.memberList());
         model.addAttribute("memberList", memberService.memberList());
+        System.out.println("세션 정보 : " + httpSession.getAttribute("user"));
+        model.addAttribute("member", httpSession.getAttribute("user"));
         return "index";
     }
 
     @GetMapping("/join")
-    public String join(){
-
+    public String join(Model model, HttpSession httpSession){
+        System.out.println("세션 정보 : " + httpSession.getAttribute("user"));
+        model.addAttribute("member", httpSession.getAttribute("user"));
         return "join";
     }
 
     @GetMapping("/login")
-    public String loginPage(){
-
+    public String loginPage(Model model, HttpSession httpSession){
+        System.out.println("세션 정보 : " + httpSession.getAttribute("user"));
+        model.addAttribute("member", httpSession.getAttribute("user"));
         return "login";
     }
 
@@ -40,8 +44,12 @@ public class IndexController {
         httpSession.setAttribute("user", memberService.login(loginDTO));
         model.addAttribute("member", httpSession.getAttribute("user"));
         return "redirect:/";
+    }
 
-
+    @GetMapping("/logout")
+    public String logout(HttpSession httpSession){
+        httpSession.invalidate();
+        return "redirect:/";
     }
 
 }
