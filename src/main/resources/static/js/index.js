@@ -83,5 +83,11 @@ $(document).ready(function () {
         });
     });
 
+    // 수정 페이지 이동
+    $('#updateBtn').click(function () {
+        var bno = $('#bno').val();
+        window.location.href='/update/{{bno}}';
+    });
+
 
 });

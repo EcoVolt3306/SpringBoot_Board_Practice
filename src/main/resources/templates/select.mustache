@@ -1,0 +1,18 @@
+{{>layout/header}}
+<div id="selectForm">
+{{#select}}
+    <input id="bno" type="hidden" value="{{bno}}">
+    <p>제목 : {{title}} </p>
+    <p>내용 : {{content}} </p>
+    <p>작성자 : {{writer}} </p>
+    <p>작성일 : {{regdate}} </p>
+    <p>조회수 : {{readcount}} </p>
+    <p>일반 추천수 {{userreco}} </p>
+    <p>전문가 추천수 {{proreco}} </p>
+{{/select}}
+    <button id="updateBtn">수정</button>
+    <button id="reco">추천</button>
+    <button id="home">메인</button>
+</div>
+
+{{>layout/footer}}

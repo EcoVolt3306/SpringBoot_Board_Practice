@@ -7,14 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
 public class IndexController {
-
-
     @Autowired
     MemberService memberService;
     @Autowired
@@ -66,6 +65,15 @@ public class IndexController {
         System.out.println("세션 정보 : " + httpSession.getAttribute("user"));
         model.addAttribute("member", httpSession.getAttribute("user"));
         return "/write";
+    }
+
+    @GetMapping("/select/{bno}")
+    public String select(@PathVariable("bno") long bno, Model model, HttpSession httpSession){
+        model.addAttribute("member", httpSession.getAttribute("user"));
+        model.addAttribute("select", boardService.select(bno));
+        boardService.readcount(bno);
+        System.out.println("세션 정보 : " + httpSession.getAttribute("user"));
+        return "/select";
     }
 
 }
