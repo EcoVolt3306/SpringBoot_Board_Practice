@@ -1,8 +1,6 @@
 package com.b.bbb.service;
 
-import com.b.bbb.domain.BoardListDTO;
-import com.b.bbb.domain.SelectDTO;
-import com.b.bbb.domain.WriteDTO;
+import com.b.bbb.domain.*;
 import com.b.bbb.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,4 +29,30 @@ public class BoardService {
     public void readcount(long bno){
         boardMapper.readcount(bno);
     }
+
+    public void reco(RecoDTO recoDTO){
+        if(recoDTO.getType().equals("일반")) {
+            boardMapper.userreco(recoDTO);
+        }
+        else if(recoDTO.getType().equals("전문가")) {
+            boardMapper.proreco(recoDTO);
+        }
+    }
+
+    public void delete(DeleteDTO deleteDTO){
+        boardMapper.delete(deleteDTO);
+    }
+
+    public void update(UpdateDTO updateDTO){
+        boardMapper.update(updateDTO);
+    }
+
+    public void reply(ReplyDTO replyDTO){
+        boardMapper.reply(replyDTO);
+    }
+
+    public ArrayList<ReplyListDTO> replyList(long bno){
+        return boardMapper.replyList(bno);
+    }
+
 }

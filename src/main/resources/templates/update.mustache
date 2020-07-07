@@ -1,0 +1,16 @@
+{{>layout/header}}
+
+<div id="updateForm">
+    <input type="hidden" id="bno" value="{{select.bno}}">
+    제목 <input id="title" type="text" value="{{select.title}}"><br>
+    내용 <input id="content" type="text" value="{{select.content}}"><br>
+    글쓴이 <input id="writer" type="text" value="{{select.writer}}"><br>
+
+
+    <button id="update">게시글 수정</button>
+    <button id="delete">게시글 삭제</button>
+    <button id="select">뒤로</button>
+    <button id="home">메인</button>
+</div>
+
+{{>layout/footer}}

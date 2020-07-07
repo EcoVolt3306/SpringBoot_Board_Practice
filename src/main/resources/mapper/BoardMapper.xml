@@ -33,4 +33,45 @@
         where bno = #{bno}
     </update>
 
+    <update id="userreco">
+        update view_b_board
+        set userreco = userreco + 1
+        where bno = #{bno}
+    </update>
+
+    <update id="proreco">
+        update view_b_board
+        set proreco = proreco + 1
+        where bno = #{bno}
+    </update>
+
+    <delete id="delete">
+        delete from view_b_board
+        where bno = #{bno}
+    </delete>
+
+    <update id="update">
+        update view_b_board
+        set title = #{title},
+        content = #{content},
+        writer = #{writer}
+        where bno = #{bno}
+    </update>
+
+    <insert id="reply">
+        insert into view_b_reply values(
+        seq_b_reply_rno.nextval,  <!-- 시퀀스.nextval = 증가한 상태로 insert -->
+        #{re_writer},
+        #{re_content},
+        sysdate,
+        #{mno},
+        #{bno}
+        )
+    </insert>
+
+    <select id="replyList" resultType="com.b.bbb.domain.ReplyListDTO">
+        select * from view_b_reply
+        where bno = #{bno}
+    </select>
+
 </mapper>

@@ -1,9 +1,8 @@
 package com.b.bbb.mapper;
 
-import com.b.bbb.domain.BoardListDTO;
-import com.b.bbb.domain.SelectDTO;
-import com.b.bbb.domain.WriteDTO;
+import com.b.bbb.domain.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public interface BoardMapper {
@@ -11,4 +10,14 @@ public interface BoardMapper {
     ArrayList<BoardListDTO> boardList();
     SelectDTO select(long bno);
     void readcount(long bno);
+
+    void userreco(RecoDTO recoDTO);
+    void proreco(RecoDTO recoDTO);
+
+    void delete(DeleteDTO deleteDTO);
+
+    void update(UpdateDTO updateDTO);
+
+    void reply(ReplyDTO replyDTO);
+    ArrayList<ReplyListDTO> replyList(long bno);
 }

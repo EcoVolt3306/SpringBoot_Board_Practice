@@ -83,11 +83,91 @@ $(document).ready(function () {
         });
     });
 
+    // 추천
+    $('#reco').click(function () {
+        var data = {
+            bno : $('#bno').val(),
+            type : $('#type').val(),
+        };
+
+        $.ajax({
+            type: 'post',
+            url: '/rest/reco',
+            data: data
+        }).done(function(){
+            alert("추천하셨습니다!");
+            window.location.href='/';
+        }).fail(function (error) {
+            alert(error);
+        });
+    });
+
     // 수정 페이지 이동
     $('#updateBtn').click(function () {
         var bno = $('#bno').val();
-        window.location.href='/update/{{bno}}';
+        window.location.href='/update/'+bno;
     });
 
+    // 추천
+    $('#delete').click(function () {
+        var data = {
+            bno : $('#bno').val()
+        };
+
+        $.ajax({
+            type: 'post',
+            url: '/rest/delete',
+            data: data
+        }).done(function(){
+            alert("해당 게시글이 삭제되었습니다!");
+            window.location.href='/';
+        }).fail(function (error) {
+            alert(error);
+        });
+    });
+
+    // 수정
+    $('#update').click(function () {
+        var data = {
+            bno : $('#bno').val(),
+            title : $('#title').val(),
+            content : $('#content').val(),
+            writer : $('#writer').val()
+        };
+
+        $.ajax({
+            type: 'post',
+            url: '/rest/update',
+            data: data
+        }).done(function(){
+            alert("게시글 수정 성공!");
+            window.location.href='/';
+        }).fail(function (error) {
+            alert(error);
+        });
+    });
+
+    // 댓글
+    $('#reply').click(function () {
+        var bno = $('#bno').val();
+
+        var data = {
+            bno : $('#bno').val(),
+            re_writer : $('#re_writer').val(),
+            re_content : $('#re_content').val(),
+            mno : $('#mno').val()
+        };
+
+        $.ajax({
+            type: 'post',
+            url: '/rest/reply',
+            data: data
+        }).done(function(){
+            alert("댓글 등록!");
+            window.location.href='/select/' + bno;
+        }).fail(function (error) {
+            alert(error);
+        });
+    });
 
 });

@@ -73,7 +73,18 @@ public class IndexController {
         model.addAttribute("select", boardService.select(bno));
         boardService.readcount(bno);
         System.out.println("세션 정보 : " + httpSession.getAttribute("user"));
+
+        model.addAttribute("replyList", boardService.replyList(bno));
+
         return "/select";
+    }
+
+    @GetMapping("/update/{bno}")
+    public String update(@PathVariable("bno") long bno, Model model, HttpSession httpSession){
+        model.addAttribute("member", httpSession.getAttribute("user"));
+        model.addAttribute("select", boardService.select(bno));
+        System.out.println("Controller : 게시글 업데이트 요청");
+        return "/update";
     }
 
 }

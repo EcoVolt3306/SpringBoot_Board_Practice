@@ -6,13 +6,27 @@
     <p>내용 : {{content}} </p>
     <p>작성자 : {{writer}} </p>
     <p>작성일 : {{regdate}} </p>
-    <p>조회수 : {{readcount}} </p>
-    <p>일반 추천수 {{userreco}} </p>
-    <p>전문가 추천수 {{proreco}} </p>
+
+    <span>조회수 : {{readcount}} </span>
+    <span>일반 추천수 {{userreco}} </span>
+    <span>전문가 추천수 {{proreco}} </span> <br><br>
 {{/select}}
     <button id="updateBtn">수정</button>
     <button id="reco">추천</button>
     <button id="home">메인</button>
 </div>
+
+<hr> <h3>댓글</h3>
+{{#replyList}}
+
+        <p>글쓴이 : {{re_writer}}</p>
+        <p>내용 : {{re_content}}</p>>
+        <p>작성일 : {{re_date}}</p>
+
+{{/replyList}}
+<br><br><br>
+<input type="text" id="re_writer">
+<input type="text" id="re_content">
+<button id="reply">댓글등록</button>
 
 {{>layout/footer}}
