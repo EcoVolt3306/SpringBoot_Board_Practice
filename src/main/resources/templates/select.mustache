@@ -20,13 +20,13 @@
 {{#replyList}}
 
         <p>글쓴이 : {{re_writer}}</p>
-        <p>내용 : {{re_content}}</p>>
+        <p>내용 : {{re_content}}</p>
         <p>작성일 : {{re_date}}</p>
-
+<hr>
 {{/replyList}}
-<br><br><br>
-<input type="text" id="re_writer">
-<input type="text" id="re_content">
+<br>
+<input type="text" id="re_writer" placeholder="작성자">
+<input type="text" id="re_content" placeholder="내용">
 <button id="reply">댓글등록</button>
 
 {{>layout/footer}}
