@@ -1,9 +1,19 @@
 select * from tabs;
 
+/*테이블 제거 쿼리*/
+drop sequence seq_b_reply_rno;
+drop sequence seq_b_board_bno;
+drop sequence seq_b_member_mno;
+
+drop view view_b_reply;
+drop view view_b_board;
+drop view view_b_member;
+
 drop table b_reply;
 drop table b_board;
 drop table b_member;
 
+/*테이블 생성*/
 create table b_member(
                          mno number not null,
                          id varchar2(100) not null,
@@ -42,10 +52,6 @@ create table b_reply(
                             on delete cascade
 );
 
-drop view view_b_reply;
-drop view view_b_board;
-drop view view_b_member;
-
 create view view_b_member
 as select * from b_member;
 
@@ -69,6 +75,7 @@ create sequence seq_b_reply_rno
 
 commit;
 
+/* 조회 */
 select * from b_member;
 select * from b_board;
 select * from view_b_reply;
