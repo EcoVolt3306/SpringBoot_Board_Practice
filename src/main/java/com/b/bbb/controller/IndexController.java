@@ -1,6 +1,7 @@
 package com.b.bbb.controller;
 
 import com.b.bbb.domain.LoginDTO;
+import com.b.bbb.domain.ReadcountDTO;
 import com.b.bbb.service.BoardService;
 import com.b.bbb.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,7 @@ public class IndexController {
     public String login(LoginDTO loginDTO, HttpSession httpSession, Model model){
         System.out.println("login Controller : " + memberService.login(loginDTO));
         httpSession.setAttribute("user", memberService.login(loginDTO));
+        httpSession.setAttribute("type", memberService.login(loginDTO).getType());
         model.addAttribute("member", httpSession.getAttribute("user"));
         return "redirect:/";
     }
@@ -68,13 +70,19 @@ public class IndexController {
     }
 
     @GetMapping("/select/{bno}")
-    public String select(@PathVariable("bno") long bno, Model model, HttpSession httpSession){
+    public String select(@PathVariable("bno") long bno, Model model, HttpSession httpSession, ReadcountDTO readcountDTO){
         model.addAttribute("member", httpSession.getAttribute("user"));
         model.addAttribute("select", boardService.select(bno));
-        boardService.readcount(bno);
+        System.out.println("세션 정보222 : " + httpSession.getAttribute("user"));
+        System.out.println("타---------------------입 : " + httpSession.getAttribute("type"));
+        //boardService.readcount(bno);
+        boardService.readcount(readcountDTO, httpSession);
+
+
         System.out.println("세션 정보 : " + httpSession.getAttribute("user"));
 
         model.addAttribute("replyList", boardService.replyList(bno));
+
 
         return "/select";
     }

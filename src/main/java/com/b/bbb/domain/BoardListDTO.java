@@ -11,6 +11,7 @@ public class BoardListDTO {
     private String writer;
     private Date regdate;
     private int readcount;
+    private int procount;
     private int userreco;
     private int proreco;
 }

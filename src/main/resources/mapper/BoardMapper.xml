@@ -12,12 +12,13 @@
             0,
             0,
             0,
+            0,
             #{mno}
         )
     </insert>
 
     <select id="boardList" resultType="com.b.bbb.domain.BoardListDTO">
-        select bno, title, writer, regdate, readcount, userreco, proreco
+        select bno, title, writer, regdate, readcount, procount, userreco
         from view_b_board
     </select>
 
@@ -27,11 +28,29 @@
         where bno = #{bno}
     </select>
 
+
+
+
+
+
     <update id="readcount">
         update view_b_board
         set readcount = readcount + 1
         where bno = #{bno}
     </update>
+
+    <update id="procount">
+        update view_b_board
+        set procount = procount + 1
+        where bno = #{bno}
+    </update>
+
+
+
+
+
+
+
 
     <update id="userreco">
         update view_b_board

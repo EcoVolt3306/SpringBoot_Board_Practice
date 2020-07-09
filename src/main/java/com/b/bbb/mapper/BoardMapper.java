@@ -9,10 +9,12 @@ public interface BoardMapper {
     void write(WriteDTO writeDTO);
     ArrayList<BoardListDTO> boardList();
     SelectDTO select(long bno);
-    void readcount(long bno);
+
+    void readcount(ReadcountDTO readcountDTO);
+    void procount(ReadcountDTO readcountDTO);
 
     void userreco(RecoDTO recoDTO);
-    void proreco(RecoDTO recoDTO);
+    //void proreco(RecoDTO recoDTO);
 
     void delete(DeleteDTO deleteDTO);
 

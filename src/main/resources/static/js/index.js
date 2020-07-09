@@ -170,4 +170,23 @@ $(document).ready(function () {
         });
     });
 
+    // count
+    $('#count').click(function () {
+        var data = {
+            mno : $('#mno').val(),
+            title : $('#title').val(),
+            type : $('#type').val(),
+        };
+
+        $.ajax({
+            type: 'post',
+            url: '/rest/readcount',
+            data: data
+        }).done(function(){
+
+        }).fail(function (error) {
+            alert(error);
+        });
+    });
+
 });

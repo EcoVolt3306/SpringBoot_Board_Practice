@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 public class IndexRestController {
     @Autowired
@@ -30,6 +32,12 @@ public class IndexRestController {
     public void reco(RecoDTO recoDTO){
         System.out.println("Reco Rest Controller");
         boardService.reco(recoDTO);
+    }
+
+    @PostMapping("/rest/readcount")
+    public void readcount(ReadcountDTO readcountDTO, HttpSession httpSession){
+        System.out.println("Rest Controllor : 조회수 처리");
+        boardService.readcount(readcountDTO, httpSession);
     }
 
     @PostMapping("/rest/delete")

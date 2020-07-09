@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 @Service
@@ -26,17 +27,37 @@ public class BoardService {
         return boardMapper.select(bno);
     }
 
-    public void readcount(long bno){
-        boardMapper.readcount(bno);
+    public void readcount(ReadcountDTO readcountDTO, HttpSession httpSession){
+        System.out.println("readcount 서비스");
+        //boardMapper.readcount(readcountDTO);
+        //boardMapper.procount(readcountDTO);
+        System.out.println("왜판별이 안되노........."+readcountDTO);
+        /*
+        if(readcountDTO.getType().equals("false")) {
+            System.out.println("일반");
+            boardMapper.readcount(readcountDTO);
+        }
+        else if(readcountDTO.getType().equals("True")) {
+            System.out.println("프로");
+            boardMapper.procount(readcountDTO);
+        }
+         */
+
+        if(httpSession.getAttribute("type").equals("false")) {
+            System.out.println("일반");
+            boardMapper.readcount(readcountDTO);
+        }
+        else if(httpSession.getAttribute("type").equals("True")) {
+            System.out.println("프로");
+            boardMapper.procount(readcountDTO);
+        }
+
+        System.out.println(readcountDTO.getType());
+
     }
 
     public void reco(RecoDTO recoDTO){
-        if(recoDTO.getType().equals("일반")) {
-            boardMapper.userreco(recoDTO);
-        }
-        else if(recoDTO.getType().equals("전문가")) {
-            boardMapper.proreco(recoDTO);
-        }
+        boardMapper.userreco(recoDTO);
     }
 
     public void delete(DeleteDTO deleteDTO){

@@ -7,20 +7,16 @@
     <thead>
         <tr>
             <th>회원번호</th>
-            <th>아이디</th>
-            <th>이름</th>
-            <th>회원유형</th>
-            <th>가입일자</th>
+            <th>회원이름</th>
+            <th>전문가유무</th>
         </tr>
     </thead>
     <tbody>
         {{#memberList}}
         <tr>
             <th>{{mno}}</th>
-            <th>{{id}}</th>
             <th>{{name}}</th>
             <th>{{type}}</th>
-            <th>{{regdate}}</th>
         </tr>
         {{/memberList}}
     </tbody>
@@ -34,25 +30,26 @@
 <table>
     <thead>
     <tr>
-        <th>글번호</th>
+        <th>번호</th>
         <th>제목</th>
-        <th>작성자</th>
-        <th>등록일</th>
-        <th>일반 추천수</th>
-        <th>전문가 추천수</th>
-        <th>조회수</th>
+        <th>글쓴이이름</th>
+        <th>작성일자</th>
+        <th>일반조회수</th>
+        <th>전문가조회수</th>
+        <th>추천수</th>
     </tr>
     </thead>
     <tbody>
     {{#boardList}}
+        <input type="hidden" id="title" value="{{title}}">
         <tr>
             <th>{{bno}}</th>
-            <th> <a href="/select/{{bno}}"> {{title}} </a> </th>
+            <th> <a id="count" href="/select/{{bno}}"> {{title}} </a> </th>
             <th>{{writer}}</th>
             <th>{{regdate}}</th>
-            <th>{{userreco}}</th>
-            <th>{{proreco}}</th>
             <th>{{readcount}}</th>
+            <th>{{procount}}</th>
+            <th>{{userreco}}</th>
         </tr>
     {{/boardList}}
     </tbody>
