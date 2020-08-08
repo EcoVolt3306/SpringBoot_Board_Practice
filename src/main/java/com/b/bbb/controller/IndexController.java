@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 
+// 테스트
 @Controller
 public class IndexController {
     @Autowired
